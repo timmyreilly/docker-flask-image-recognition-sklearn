@@ -27,6 +27,7 @@ print(cntk.all_devices())
 # initialize our Flask application and the Keras model
 app = flask.Flask(__name__)
 model = None
+model = load_model('my_model.h5')
 
 def set_keras_backend(backend):
     if K.backend() != backend: 
