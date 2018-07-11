@@ -17,7 +17,7 @@ import flask
 import io
 from keras import backend as K
 import os
-from importlib import reload
+# from importlib import reload
 
 import cntk
 print(cntk.__version__)
@@ -27,7 +27,6 @@ print(cntk.all_devices())
 # initialize our Flask application and the Keras model
 app = flask.Flask(__name__)
 model = None
-model = load_model('my_model.h5')
 
 def set_keras_backend(backend):
     if K.backend() != backend: 
@@ -106,6 +105,5 @@ def predict():
 if __name__ == "__main__":
     print(("* Loading Keras model and Flask starting server..."
            "please wait until server has fully started"))
-    set_keras_backend("cntk")
-    # load_model()
+    load_model()
     app.run(host='0.0.0.0', debug=False)
