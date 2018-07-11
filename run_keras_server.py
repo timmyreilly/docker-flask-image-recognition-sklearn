@@ -79,7 +79,7 @@ def predict():
             image = Image.open(io.BytesIO(image))
 
             # preprocess the image and prepare it for classification
-            image = prepare_image(image, target=(224, 224))
+            image = prepare_image(image, target=(64, 64))
 
             # classify the input image and then initialize the list
             # of predictions to return to the client
