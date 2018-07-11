@@ -3,7 +3,7 @@
 #       python run_keras_server.py
 # Submit a request via cURL:
 #       curl -X POST -F image=@dog.jpg 'http://localhost:5000/predict'
-# Submita a request via Python:
+# Submit a a request via Python:
 #       python simple_request.py
 
 # import the necessary packages
@@ -17,7 +17,7 @@ import flask
 import io
 from keras import backend as K
 import os
-from importlib import reload
+# from importlib import reload
 
 import cntk
 print(cntk.__version__)
@@ -34,16 +34,15 @@ def set_keras_backend(backend):
         reload(K)
         assert K.backend() == backend
         
-set_keras_backend("cntk")
 
 
 def load_model():
-    global model
-    model = load_model('my_model.h5')
     # load the pre-trained Keras model (here we are using a model
     # pre-trained on ImageNet and provided by Keras, but you can
     # substitute in your own networks just as easily)
+    global model
     # try: 
+    model = load_model('my_model.h5')
     # except Exception as ex:
     #     print(ex) 
     #     print('lolz ya missed... using resnet ****')
@@ -104,7 +103,8 @@ def predict():
 # if this is the main thread of execution first load the model and
 # then start the server
 if __name__ == "__main__":
-    load_model()
     print(("* Loading Keras model and Flask starting server..."
            "please wait until server has fully started"))
+    set_keras_backend("cntk")
+    load_model()
     app.run(host='0.0.0.0', debug=False)
