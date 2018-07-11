@@ -8,6 +8,7 @@
 
 # import the necessary packages
 from keras.applications import ResNet50
+from keras.models import load_model
 from keras.preprocessing.image import img_to_array
 from keras.applications import imagenet_utils
 from PIL import Image
@@ -25,7 +26,11 @@ def load_model():
     # pre-trained on ImageNet and provided by Keras, but you can
     # substitute in your own networks just as easily)
     global model
-    model = ResNet50(weights="imagenet")
+    try: 
+        model = load_model('./../../first_try.h5')
+    except:
+        print('lolz ya missed... using resnet ****')
+        model = ResNet50(weights="imagenet")
 
 
 def prepare_image(image, target):
