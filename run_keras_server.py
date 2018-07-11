@@ -15,10 +15,24 @@ from PIL import Image
 import numpy as np
 import flask
 import io
+from keras import backend as K
+import os
+from importlib import reload
+
+import cntk
+print(cntk.__version__)
 
 # initialize our Flask application and the Keras model
 app = flask.Flask(__name__)
 model = None
+
+def set_keras_backend(backend):
+    if K.backend() != backend: 
+        os.environ['KERAS_BACKEND'] = backend
+        reload(K)
+        assert K.backend() == backend
+        
+set_keras_backend("cntk")
 
 
 def load_model():
