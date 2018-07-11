@@ -17,7 +17,7 @@ import flask
 import io
 from keras import backend as K
 import os
-# from importlib import reload
+from importlib import reload
 
 import cntk
 print(cntk.__version__)
