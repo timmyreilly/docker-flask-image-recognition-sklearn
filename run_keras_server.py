@@ -64,6 +64,7 @@ def prepare_image(image, target):
     # return the processed image
     return image
 
+cato = {0: 'axes', 1: 'boots', 2: 'carabiners', 3: 'crampons', 4: 'gloves', 5: 'hardshell_jackets', 6: 'harnesses', 7: 'helmets', 8: 'insulated_jackets', 9: 'pulleys', 10: 'rope', 11: 'tents'}
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -83,22 +84,22 @@ def predict():
 
             # classify the input image and then initialize the list
             # of predictions to return to the client
-            preds = model.predict(image)
-            results = imagenet_utils.decode_predictions(preds)
+            result = model.predict(image)
             print(preds) 
-            data["predictions"] = []
+            prediction = cato[result.argmax()]
+
 
             # loop over the results and add them to the list of
             # returned predictions
-            for (imagenetID, label, prob) in results[0]:
-                r = {"label": label, "probability": float(prob)}
-                data["predictions"].append(r)
+            # for (imagenetID, label, prob) in results[0]:
+            #     r = {"label": label, "probability": float(prob)}
+            #     data["predictions"].append(r)
 
             # indicate that the request was a success
             data["success"] = True
 
     # return the data dictionary as a JSON response
-    return flask.jsonify(data)
+    return flask.jsonify(prediciton)
 
 
 # if this is the main thread of execution first load the model and
