@@ -28,7 +28,8 @@ def load_model():
     global model
     try: 
         model = load_model('my_model.h5')
-    except:
+    except Exception as ex:
+        print(ex) 
         print('lolz ya missed... using resnet ****')
         model = ResNet50(weights="imagenet")
 
