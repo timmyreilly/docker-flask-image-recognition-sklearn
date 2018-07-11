@@ -43,7 +43,7 @@ def load_model():
     # substitute in your own networks just as easily)
     global model
     # try: 
-    model = load_model('./my_model.h5')
+    model = load_model('my_model.h5')
     # except Exception as ex:
     #     print(ex) 
     #     print('lolz ya missed... using resnet ****')
@@ -85,6 +85,7 @@ def predict():
             # of predictions to return to the client
             preds = model.predict(image)
             results = imagenet_utils.decode_predictions(preds)
+            print(preds) 
             data["predictions"] = []
 
             # loop over the results and add them to the list of
