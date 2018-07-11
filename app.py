@@ -7,6 +7,8 @@ import json
 import pickle
 import numpy as np
 import requests
+from keras.models import load_model
+
 
 # These are the possible categories (classes) which can be detected
 namemap = [
@@ -98,7 +100,8 @@ def classify():
         imgFeatures = np.array(prcedImg).ravel().reshape(1,-1)
         print(imgFeatures)
 
-        model   = joblib.load('pickle_model.pkl')
+        # model   = joblib.load('pickle_model.pkl')
+        model = model.load_model('my_model.h5')
         predict = model.predict(imgFeatures)
         print('The image is a ', namemap[int(predict[0])]),
         
