@@ -107,5 +107,5 @@ if __name__ == "__main__":
     print(("* Loading Keras model and Flask starting server..."
            "please wait until server has fully started"))
     set_keras_backend("cntk")
-    load_model()
+    # load_model()
     app.run(host='0.0.0.0', debug=False)
