@@ -99,7 +99,7 @@ def predict():
             data["success"] = True
 
     # return the data dictionary as a JSON response
-    return flask.jsonify(prediciton)
+    return flask.jsonify(prediction)
 
 
 # if this is the main thread of execution first load the model and
