@@ -38,12 +38,12 @@ set_keras_backend("cntk")
 
 
 def load_model():
+    global model
+    model = load_model('my_model.h5')
     # load the pre-trained Keras model (here we are using a model
     # pre-trained on ImageNet and provided by Keras, but you can
     # substitute in your own networks just as easily)
-    global model
     # try: 
-    model = load_model('my_model.h5')
     # except Exception as ex:
     #     print(ex) 
     #     print('lolz ya missed... using resnet ****')
@@ -104,7 +104,7 @@ def predict():
 # if this is the main thread of execution first load the model and
 # then start the server
 if __name__ == "__main__":
+    load_model()
     print(("* Loading Keras model and Flask starting server..."
            "please wait until server has fully started"))
-    load_model()
     app.run(host='0.0.0.0', debug=False)
