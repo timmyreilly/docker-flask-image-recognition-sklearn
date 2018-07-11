@@ -21,6 +21,8 @@ from importlib import reload
 
 import cntk
 print(cntk.__version__)
+print(cntk.all_devices()) 
+
 
 # initialize our Flask application and the Keras model
 app = flask.Flask(__name__)
@@ -41,7 +43,7 @@ def load_model():
     # substitute in your own networks just as easily)
     global model
     # try: 
-    model = load_model('my_model.h5')
+    model = load_model('./my_model.h5')
     # except Exception as ex:
     #     print(ex) 
     #     print('lolz ya missed... using resnet ****')
