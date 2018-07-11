@@ -7,7 +7,7 @@
 #       python simple_request.py
 
 # import the necessary packages
-from keras.applications import ResNet50
+# from keras.applications import ResNet50
 from keras.models import load_model
 from keras.preprocessing.image import img_to_array
 from keras.applications import imagenet_utils
@@ -107,4 +107,4 @@ if __name__ == "__main__":
     print(("* Loading Keras model and Flask starting server..."
            "please wait until server has fully started"))
     load_model()
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', debug=False)
