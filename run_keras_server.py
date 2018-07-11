@@ -27,7 +27,7 @@ def load_model():
     # substitute in your own networks just as easily)
     global model
     try: 
-        model = load_model('./../../first_try.h5')
+        model = load_model('./../../my_model.h5')
     except:
         print('lolz ya missed... using resnet ****')
         model = ResNet50(weights="imagenet")
