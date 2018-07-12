@@ -1,7 +1,7 @@
 from flask             import Flask, render_template, jsonify, request, Response
 from PIL               import Image, ImageOps 
 from io                import BytesIO
-# from sklearn.externals import joblib
+from sklearn.externals import joblib
 import pickle
 import json
 import pickle
@@ -101,7 +101,7 @@ def classify():
         print(imgFeatures)
 
         # model   = joblib.load('pickle_model.pkl')
-        model = load_model('my_model.h5')
+        model = model.load_model('my_model.h5')
         predict = model.predict(imgFeatures)
         print('The image is a ', namemap[int(predict[0])]),
         
