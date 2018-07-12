@@ -103,7 +103,7 @@ def classify():
         model = None
 
         # model   = joblib.load('pickle_model.pkl')
-        model = model.load_model('my_model.h5')
+        model = load_model('my_model.h5')
         predict = model.predict(imgFeatures)
         print('The image is a ', namemap[int(predict[0])]),
         
