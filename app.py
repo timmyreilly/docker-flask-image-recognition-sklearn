@@ -31,7 +31,7 @@ app = Flask(__name__)
 def resize(image):
     """ Resize any image to 128 x 128, which is what the model has been trained on """
     
-    base = 128
+    base = 64
     width, height = image.size
 
     if width > height:
